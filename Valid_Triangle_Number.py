@@ -1,0 +1,24 @@
+class Solution(object):
+    def triangleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        nums.sort()
+        n = len(nums)
+        count = 0
+        for k in range(2, n):
+            i = 0
+            j = k-1
+            while i < j:
+                if nums[i] + nums[j] > nums[k]:
+                    count += (j-i)
+                    j-=1
+                else:
+                    i+=1
+        return count 
+
+        
+
+nums = [2,2,3,4]
+print(Solution().triangleNumber(nums))
